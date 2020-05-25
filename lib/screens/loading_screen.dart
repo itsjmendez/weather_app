@@ -27,8 +27,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     latitude = location.latitude;
     longitude = location.longitude;
 
-    print(location.latitude);
-    print(location.longitude);
+//    print(location.latitude);
+//    print(location.longitude);
+
+    getData();
   }
 
   void getData() async{
@@ -36,6 +38,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
      if (response.statusCode == 200){
        String data = response.body;
        print(data);
+
+//       var decodedData = jsonDecode(data);
+//       double temperature = decodedData['main']['temp'];
+//       int condition = decodedData ['weather'][0]['id'];
+//       String cityName = decodedData['name'];
+
+//       print(temperature);
+//       print(condition);
+//       print(cityName);
      }
      else{
       print(response.statusCode);
@@ -46,7 +57,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   
   @override
   Widget build(BuildContext context) {
-    getData();
     return Scaffold();
   }
 }
