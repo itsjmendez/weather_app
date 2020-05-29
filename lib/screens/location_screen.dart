@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/utilities/constants.dart';
+import 'package:weatherapp/services/weather.dart';
 
 class LocationScreen extends StatefulWidget {
 
@@ -12,7 +13,7 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen> {
 
-
+  WeatherModel weather = WeatherModel();
   int temperature;
   int condition;
   String cityName;
@@ -28,7 +29,7 @@ class _LocationScreenState extends State<LocationScreen> {
     temperature = temp.toInt();
     condition = weatherData['weather'][0]['id'];
     cityName = weatherData['name'];
-
+    weather.getWeatherIcon(condition);
     print(temperature);
   }
 
