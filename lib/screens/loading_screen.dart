@@ -35,11 +35,17 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var weatherData = await nHelper.getData();
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return LocationScreen();
+      return LocationScreen(locationWeather: weatherData ,);
     }));
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: SpinKitWave(
+          color: Colors.deepPurpleAccent,
+        ),
+      ) ,
+    );
   }
 }
