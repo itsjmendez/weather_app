@@ -8,7 +8,7 @@ const openWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
 class WeatherModel {
 
 
-  void getLocationWeather() async{
+  Future<dynamic>  getLocationWeather() async{
     Location location = Location();
     await location.getCurrentLocation();
 
@@ -17,6 +17,8 @@ class WeatherModel {
 
 
     var weatherData = await nHelper.getData();
+
+    return weatherData;
   }
 
 
