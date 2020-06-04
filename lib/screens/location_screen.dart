@@ -29,7 +29,7 @@ class _LocationScreenState extends State<LocationScreen> {
       if (weatherData == null) {
         temperature = 0;
         weatherIcon = 'Error';
-        weatherMessage = 'Unable to get weather';
+        weatherMessage = 'Unable to get weather data';
         cityName = '';
         return;
       }
@@ -40,7 +40,6 @@ class _LocationScreenState extends State<LocationScreen> {
       weatherMessage = weather.getMessage(temperature);
       cityName = weatherData['name'];
     });
-    print(temperature);
   }
 
   @override
@@ -65,8 +64,8 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {
-                      var weatherData = weather.getLocationWeather();
+                    onPressed: () async {
+                      var weatherData = await weather.getLocationWeather();
                       updateUI(weatherData);
                     },
                     child: Icon(
@@ -80,8 +79,9 @@ class _LocationScreenState extends State<LocationScreen> {
                         context,
                         MaterialPageRoute(builder: (context) => CityScreen()),
                       );
-                      if (typedName != null){
-                        var weatherData = await weather.getCityWeather(typedName);
+                      if (typedName != null) {
+                        var weatherData =
+                            await weather.getCityWeather(typedName);
                         updateUI(weatherData);
                       }
                     },
